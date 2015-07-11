@@ -86,7 +86,7 @@ class TS3Proto():
     def __init__(self):
         self.io_lock = Lock()
         self._connected = False
-        self._timeout = 3
+        self._timeout = 5
         self._telnet = None
         self._logger = logging.getLogger(__name__)
 
