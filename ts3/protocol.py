@@ -94,7 +94,7 @@ class TS3Proto():
     def logger(self):
         return self._logger
 
-    def connect(self, ip, port=10011, timeout=2):
+    def connect(self, ip, port=10011, timeout=4):
         with self.io_lock:
             try:
                 self._telnet = telnetlib.Telnet(ip, port)
