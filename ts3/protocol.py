@@ -69,6 +69,7 @@ class TS3Response():
     def __init__(self, response, data):
         self.response = TS3Proto.parse_response(response)
         self.data = TS3Proto.parse_data(data)
+        self.raw = data
 
         if isinstance(self.data, dict):
             if self.data:
