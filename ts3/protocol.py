@@ -236,7 +236,7 @@ class TS3Proto():
         Escape a value into a TS3 compatible string
 
         @param value: Value
-        @type value: string/int
+        @type value: string/int/long
 
         """
 
