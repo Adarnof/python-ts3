@@ -240,7 +240,7 @@ class TS3Proto():
 
         """
 
-        if isinstance(value, int):
+        if type(value) in (int, long, ):
             return str(value)
 
         for i, j in ts3_escape:
