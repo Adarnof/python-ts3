@@ -69,6 +69,7 @@ class TS3Response():
     def __init__(self, response, data):
         self.response = TS3Proto.parse_response(response)
         self.data = TS3Proto.parse_data(data)
+        self.raw = data
 
         if isinstance(self.data, dict):
             if self.data:
@@ -94,7 +95,7 @@ class TS3Proto():
     def logger(self):
         return self._logger
 
-    def connect(self, ip, port=10011, timeout=5):
+    def connect(self, ip, port=10011, timeout=4):
         with self.io_lock:
             try:
                 self._telnet = telnetlib.Telnet(ip, port)
