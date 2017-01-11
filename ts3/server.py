@@ -114,7 +114,11 @@ class TS3Server(TS3Proto):
 
         client = None
         if cldbid:
-            clientlist = self.send_command('clientlist')
+            response = self.send_command('clientlist')
+            if response.is_successful:
+                clientlist = {}
+                for clnt in response.data:
+                    clientlist[clnt['clid']] = clnt
             for cl in clientlist.values():
                 if int(cl['client_database_id']) == cldbid:
                     client = cl['clid']
