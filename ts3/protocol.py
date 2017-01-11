@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import logging
+import sys
 import telnetlib
 from threading import Lock
 
@@ -237,11 +238,15 @@ class TS3Proto():
         Escape a value into a TS3 compatible string
 
         @param value: Value
-        @type value: string/int
+        @type value: string/int/long
 
         """
+        if sys.version_info < (3,):
+            integer_types = (int, long, )
+        else:
+            integer_types = (int, )
 
-        if isinstance(value, int):
+        if isinstance(value, integer_types):
             return str(value)
 
         for i, j in ts3_escape:
